@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 " Check if exist Vundle plugin.
 let iCanHazVundle=1
 let vundle_readme=expand('~/.vim/bundle/Vundle.vim/README.md')
