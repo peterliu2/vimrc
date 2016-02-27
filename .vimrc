@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 " Check if exist Vundle plugin.
 let iCanHazVundle=1
 let vundle_readme=expand('~/.vim/bundle/Vundle.vim/README.md')
@@ -232,27 +231,3 @@ nmap <leader>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <leader>i :cs find i <C-R>=expand("<cfile>")<CR><CR> :copen<CR><CR>
 " 設定是否使用 quickfix 窗口來顯示 cscope 結果
 set cscopequickfix=s-,c-,d-,i-,t-,e-
-=======
-set background=dark
-
-set cursorline
-
-set enc=utf8
-
-set hls
-
-set number
-
-set tabstop=2
-set shiftwidth=2
-
-set ai
-
-syntax on
-
-colorscheme desert
-
-set ruler
-
-set incsearch
->>>>>>> 45cd92b71712b3ef1424c0d70ec622d20c817598
