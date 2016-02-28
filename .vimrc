@@ -39,11 +39,11 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'vim-scripts/taglist.vim'
-Bundle 'altercation/vim-colors-solarized'
+" Plugin 'altercation/vim-colors-solarized'
 " Plugin 'bling/vim-airline'
 Plugin 'vim-scripts/winmanager'
 Plugin 'vim-scripts/a.vim'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-scripts/OmniCppComplete'
 Plugin 'moll/vim-bbye'
 
@@ -72,7 +72,7 @@ filetype plugin indent on    " required
 "--------------
 syntax enable
 set background=dark
-let g:desert_termcolors=256
+" let g:solarized_termcolors=256
 " colorscheme solarized
 colorscheme desert
 
@@ -149,7 +149,7 @@ endfunction
 " 键盘映射，同时加入防止因winmanager和nerdtree冲突而导致空白页的语句
 nmap wm :if IsWinManagerVisible() <BAR> WMToggle<CR> <BAR> else <BAR> WMToggle<CR>:q<CR> endif <CR><CR>
 " 设置winmanager的宽度，默认为25
-let g:winManagerWidth=30 
+let g:winManagerWidth=35
 " 窗口布局
 let g:winManagerWindowLayout='NERDTree|TagList'
 " 如果所有编辑文件都关闭了，退出vim
@@ -171,11 +171,7 @@ let NERDTreeShowFiles=1
 " 是否默認顯示行號
 " let NERDTreeShowLineNumbers=1
 " 窗口位置（'left' or 'right'）
-let NERDTreeWinPos='left'
-" 窗口寬
-let NERDTreeWinSize=31
-" nerdtree hot key F5
-nnoremap <F4> :NERDTreeToggle<CR>
+" let NERDTreeWinPos='left'
 
 "----------------
 "" taglist 設定
@@ -190,7 +186,7 @@ let Tlist_Auto_Update=1			 " Automatically update the taglist to include newly e
 " 顯示taglist選單
 " let Tlist_Show_Menu=1
 " 啟動vim自動打開taglist
-let Tlist_Auto_Open=1
+" let Tlist_Auto_Open=1
 " ctags, 指定tags文件的位置,讓vim自動在當前或者上層文件夾中尋找tags文件
 set tags=tags
 " 添加系統調用路徑
@@ -198,10 +194,6 @@ set tags+=/usr/include/tags
 " 鍵盤映射，更新tags & cscope
 " nmap tg :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 nmap tg :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q *<CR> :set tags+=./tags<CR>:!cscope -Rbq<CR>:cs add ./cscope.out .<CR>
-" taglist hot key F5
-nnoremap <F5> :TlistToggle<CR>
-" 窗口寬
-let Tlist_WinWidth=50
 
 "----------------
 "" Cscope 設定
@@ -219,15 +211,20 @@ if has("cscope")
     endif
     set csverb
 endif
-" map <F4>:!cscope -Rbq<CR>:cs add ./cscope.out .<CR><CR><CR> :cs reset<CR>
+
+" nmap <F12>:!cscope -Rbq<CR>:cs add ./cscope.out .<CR><CR><CR> :cs reset<CR>
  "對:cs find c等Cscope查找命令進行映射
-nmap <leader>s :cs find s <C-R>=expand("<cword>")<CR><CR> :copen<CR><CR>
+nmap <leader>s :cs find s <C-R>=expand("<cword>")<CR><CR>:copen<CR><CR>
 nmap <leader>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-nmap <leader>d :cs find d <C-R>=expand("<cword>")<CR><CR> :copen<CR><CR>
+nmap <leader>d :cs find d <C-R>=expand("<cword>")<CR><CR>:copen<CR><CR>
 nmap <leader>c :cs find c <C-R>=expand("<cword>")<CR><CR>:copen<CR><CR>
 nmap <leader>t :cs find t <C-R>=expand("<cword>")<CR><CR>:copen<CR><CR>
 nmap <leader>e :cs find e <C-R>=expand("<cword>")<CR><CR>:copen<CR><CR>
 nmap <leader>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
-nmap <leader>i :cs find i <C-R>=expand("<cfile>")<CR><CR> :copen<CR><CR>
+nmap <leader>i :cs find i <C-R>=expand("<cfile>")<CR><CR>:copen<CR><CR>
 " 設定是否使用 quickfix 窗口來顯示 cscope 結果
 set cscopequickfix=s-,c-,d-,i-,t-,e-
+
+" quickfix shortcut
+nmap cn :cn<CR>
+nmap cp :cp<CR>
