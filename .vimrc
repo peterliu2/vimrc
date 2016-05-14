@@ -228,3 +228,8 @@ set cscopequickfix=s-,c-,d-,i-,t-,e-
 " quickfix shortcut
 nmap cn :cn<CR>
 nmap cp :cp<CR>
+
+" black tab bar (color 0)
+" http://stackoverflow.com/questions/4726882/how-do-you-change-the-background-color-of-the-empty-tab-space-in-vim
+hi TabLineFill term=bold cterm=bold ctermbg=0
+
